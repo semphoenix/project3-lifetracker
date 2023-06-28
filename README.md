@@ -390,7 +390,7 @@ Here are the pieces of functionality that should be built out for the backend:
         - [ ] When `IS_TESTING` is `true`, the `getDatabaseUri` function should use the test database
         - [ ] Otherwise, it should combine the proper database environment variables into a database connection string if no `process.env.DATABASE_URL` environment variable exists
   - [x] Add a `config.js` file
-    - [ ] Use the `dotenv` package to parse the environment variables from the `.env` file.
+    - [x] Use the `dotenv` package to parse the environment variables from the `.env` file.
     - [ ] Export each of the environment variables from the `config.js` file until the tests pass
     - [ ] Write a `getDatabaseUri` function so that all the tests pass
   - [ ] Commit all work to `git`
@@ -399,25 +399,25 @@ Here are the pieces of functionality that should be built out for the backend:
   - Time bring in a PostgreSQL database client as the application's persistence layer
   - Make sure the PostgreSQL server is running
   - Create two files at the root of the project:
-    - [ ] `lifetracker-schema.sql`
-      - [ ] This script should:
-        - [ ] Create a `users` table with the following columns:
-          - [ ] `id`
-          - [ ] `username`
-          - [ ] `password`
-          - [ ] `first_name`
-          - [ ] `last_name`
-          - [ ] `email`
-          - [ ] `created_at`
-          - [ ] `updated_at`
-        - [ ] Create a `nutrition` table with the following columns:
-          - [ ] `id`
-          - [ ] `name`
-          - [ ] `category`
-          - [ ] `calories`
-          - [ ] `image_url`
-          - [ ] `user_id`
-          - [ ] `created_at`
+    - [x] `lifetracker-schema.sql`
+      - [x] This script should:
+        - [x] Create a `users` table with the following columns:
+          - [x] `id`
+          - [x] `username`
+          - [x] `password`
+          - [x] `first_name`
+          - [x] `last_name`
+          - [x] `email`
+          - [x] `created_at`
+          - [x] `updated_at`
+        - [x] Create a `nutrition` table with the following columns:
+          - [x] `id`
+          - [x] `name`
+          - [x] `category`
+          - [x] `calories`
+          - [x] `image_url`
+          - [x] `user_id`
+          - [x] `created_at`
         - [ ] **Any other tables** that the application might depend on
     - [ ] `lifetracker.sql`
       - [ ] This script should:
