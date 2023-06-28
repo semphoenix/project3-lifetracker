@@ -395,7 +395,7 @@ Here are the pieces of functionality that should be built out for the backend:
     - [ ] Write a `getDatabaseUri` function so that all the tests pass
   - [ ] Commit all work to `git`
   - [ ] The project should now be ready to go!
-- [ ] **PostgreSQL database**
+- [] **PostgreSQL database**
   - Time bring in a PostgreSQL database client as the application's persistence layer
   - Make sure the PostgreSQL server is running
   - Create two files at the root of the project:

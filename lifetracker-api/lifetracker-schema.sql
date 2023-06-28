@@ -5,7 +5,7 @@ CREATE TABLE users (
    first_name TEXT NOT NULL,
    last_name TEXT NOT NULL,
    email TEXT NOT NULL UNIQUE CHECK (position('@' IN email) > 1),
-   created_at TIMESTAMP NOT NULL DEFAULT NOW()
+   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
    updated_at TIMESTAMP NOT NULL
 );
 
@@ -16,7 +16,7 @@ CREATE TABLE nutrition (
    quantity INT NOT NULL,
    calories INT NOT NULL,
    image_url TEXT NOT NULL,
-   user_id INT NOT NULL 
+   user_id INT NOT NULL, 
    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -32,8 +32,8 @@ CREATE TABLE exercise (
 
 CREATE TABLE sleep (
    id SERIAL PRIMARY KEY,
-   start_time TIMESTAMP NOT NULL
-   end_time TIMESTAMP NOT NULL
-   user_id INT NOT NULL 
+   start_time TIMESTAMP NOT NULL,
+   end_time TIMESTAMP NOT NULL,
+   user_id INT NOT NULL, 
    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

@@ -23,16 +23,16 @@ app.use(morgan("tiny"));
 app.use("/auth", authRoutes);
 
 // health check
-app.get("/", function (req, res) {
+app.get("/", async function (req, res) {
   return res.status(200).json({
     ping: "pong",
   });
 });
 
 /** Handle 404 errors -- this matches everything */
-app.use(function (req, res, next) {
-  return next(new NotFoundError());
-});
+// app.use(function (req, res, next) {
+//   return next(new NotFoundError());
+// });
 
 /** Generic error handler; anything unhandled goes here. */
 app.use(function (err, req, res, next) {
