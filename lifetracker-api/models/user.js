@@ -4,6 +4,7 @@ const { BadRequestError, UnauthorizedError } = require("../utils/errors");
 const { validateFields } = require("../utils/validate");
 
 const { BCRYPT_WORK_FACTOR } = require("../config");
+const { createUserToken } = require("../utils/tokens");
 
 class User {
   /**
@@ -52,7 +53,9 @@ class User {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid === true) {
-        return User._createPublicUser(user);
+        const userToken = createUserToken(user.id, user.email);
+        // return this._createPublicUser(user);
+        return userToken;
       }
     }
 
@@ -112,7 +115,9 @@ class User {
     );
 
     const user = result.rows[0];
-
+    // If you want to make it so the user auto logs in as soon as you register then add this line.
+    // const userToken = createUserToken(user.id, user.email);
+    // return userToken;
     return user;
   }
 

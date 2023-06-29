@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { SECRET_KEY } = require("./config");
+const { SECRET_KEY } = require("../config");
 const { InvalidTokenError } = require("./errors");
 
 async function genToken(data) {
@@ -20,7 +20,17 @@ async function validateUserToken(token) {
     if (decodedToken) return decodedToken;
     else throw new InvalidTokenError();
   } catch (e) {
-    return e;
+    if (e instanceof InvalidTokenError) {
+      console.log("Invalid Token");
+      return undefined;
+    }
+    console.log(
+      "Error caught while trying to verify token: ",
+      token,
+      "Error: ",
+      error
+    );
+    throw e;
   }
 }
 

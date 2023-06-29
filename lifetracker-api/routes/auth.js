@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 router.get("/me", async function (req, res, next) {
   try {
-    const user = await User.fetchById(req.body.userId);
+    const user = await User.fetchById(req.body.userId); // Change to use token later
     return res.status(200).json({ user });
   } catch (err) {
     next(err);
