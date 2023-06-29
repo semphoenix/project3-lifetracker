@@ -22,7 +22,9 @@ function getDatabaseUri() {
   );
 }
 
-const BCRYPT_WORK_FACTOR = IS_TESTING ? 1 : process.env.BCRYPT_WORK_FACTOR;
+const BCRYPT_WORK_FACTOR = IS_TESTING
+  ? 1
+  : parseInt(process.env.BCRYPT_WORK_FACTOR);
 
 console.log("LifeTracker Config:".red);
 console.log("PORT:".blue, PORT);

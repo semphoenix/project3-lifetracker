@@ -90,7 +90,6 @@ class User {
     if (existingUserWithEmail) {
       throw new BadRequestError(`Duplicate email: ${email}`);
     }
-
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
 
     const result = await db.query(
@@ -99,14 +98,15 @@ class User {
           password,
           first_name,
           last_name,
-          email,
+          email
         )
         VALUES ($1, $2, $3, $4, $5)
         RETURNING id,
+                  username,
                   email,            
                   first_name AS "firstName", 
                   last_name AS "lastName",
-                  email
+                  created_at
                   `,
       [username, hashedPassword, firstName, lastName, email.toLowerCase()]
     );
