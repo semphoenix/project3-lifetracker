@@ -27,9 +27,8 @@ function App() {
         ...appState,
         user: data.user,
         token: data.token,
-        isAuthenticated: true,
       });
-  }, []);
+  }, [appState.isAuthenticated]);
 
   const fetchUser = async () => {
     const token = localStorage.getItem("lifetracker_token");
