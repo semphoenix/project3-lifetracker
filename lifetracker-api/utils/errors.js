@@ -46,6 +46,12 @@ class UnprocessableEntityError extends ExpressError {
   }
 }
 
+class InvalidTokenError extends ExpressError {
+  constructor(message = "Invalid Token") {
+    super(message, 401);
+  }
+}
+
 module.exports = {
   ExpressError,
   BadRequestError,
@@ -53,4 +59,5 @@ module.exports = {
   ForbiddenError,
   NotFoundError,
   UnprocessableEntityError,
+  InvalidTokenError,
 };
