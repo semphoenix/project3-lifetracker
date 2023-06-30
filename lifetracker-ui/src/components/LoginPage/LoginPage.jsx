@@ -16,7 +16,7 @@ const LoginPage = ({ setAppState }) => {
   // Handles form input change -- Saves form input into form state & checks for errors
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
-      // Error Handling for email input
+      // Error Handling for email input -- HAVE YET TO USE THIS (maybe get rid of databaseErrors and map over errors)
       if (event.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
       } else {
@@ -88,17 +88,15 @@ const LoginPage = ({ setAppState }) => {
       {!isLoading && (
         <div className="login-container">
           <h2>Login</h2>
-          <p className="error">
-            {errors.databaseError && errors.email === null ? errors.form : ""}
-          </p>
+          <p className="error">{errors.databaseError ? errors.form : ""}</p>
           <form className="login-form" onSubmit={handleOnSubmit}>
             <label htmlFor="email">Email:</label>
             <input
-              className={errors.form ? "error" : ""}
+              //   className={errors.form ? "error" : ""} -- For error handling
               type="text"
               id="email"
               name="email"
-              placeholder={errors.form ? errors.email : "abc@abc.org"}
+              placeholder="abc@abc.org"
               onChange={handleOnInputChange}
               required
             />

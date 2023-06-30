@@ -4,7 +4,7 @@ import apiClient from "../../services/apiClient";
 import Loading from "../Loading/Loading";
 import "./RegisterPage.css";
 
-const RegisterPage = () => {
+const RegisterPage = ({ setAppState }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -29,10 +29,12 @@ const RegisterPage = () => {
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
   };
 
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
+    //  console.log("HERE");
     setErrors((e) => ({ ...e, form: null }));
-
+    console.log(form.passwordConfirm);
     if (form.passwordConfirm !== form.password) {
       setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }));
       setIsLoading(false);
@@ -60,6 +62,7 @@ const RegisterPage = () => {
         setErrors((e) => ({
           ...e,
           form: "Something went wrong with registration",
+          databaseError: true,
         }));
         setIsLoading(false);
       }
@@ -78,13 +81,13 @@ const RegisterPage = () => {
     <>
       {isLoading && <Loading />}
       {!isLoading && (
-        <div className="login-container">
-          <h2>Login</h2>
+        <div className="register-container">
+          <h2>Register</h2>
           <p className="error">{errors.databaseError ? errors.form : ""}</p>
-          <form className="login-form" onSubmit={handleOnSubmit}>
+          <form className="register-form" onSubmit={handleOnSubmit}>
             <label htmlFor="email">Email:</label>
             <input
-              className={errors.form ? "error" : ""}
+              //   className={errors.form ? "error" : ""} -- For error handling
               type="text"
               id="email"
               name="email"
@@ -95,7 +98,7 @@ const RegisterPage = () => {
 
             <label htmlFor="username">Username:</label>
             <input
-              className={errors.form ? "error" : ""}
+              //   className={errors.form ? "error" : ""} -- For error handling
               type="text"
               id="username"
               name="username"
@@ -106,7 +109,7 @@ const RegisterPage = () => {
 
             <label htmlFor="firstName">First Name:</label>
             <input
-              className={errors.form ? "error" : ""}
+              //   className={errors.form ? "error" : ""} -- For error handling
               type="text"
               id="firstName"
               name="firstName"
@@ -117,7 +120,7 @@ const RegisterPage = () => {
 
             <label htmlFor="lastName">Last Name:</label>
             <input
-              className={errors.form ? "error" : ""}
+              //   className={errors.form ? "error" : ""} -- For error handling
               type="text"
               id="lastName"
               name="lastName"
@@ -135,16 +138,16 @@ const RegisterPage = () => {
               required
             />
 
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <label htmlFor="passwordConfirm">Confirm Password:</label>
             <input
               type="password"
-              id="confirmPassword"
-              name="confirmPassword"
+              id="passwordConfirm"
+              name="passwordConfirm"
               onChange={handleOnInputChange}
               required
             />
 
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
           </form>
         </div>
       )}
