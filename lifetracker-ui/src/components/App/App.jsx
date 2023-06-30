@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import apiClient from "../../services/apiClient";
 import "./App.css";
-import Navbar from "../Navbar/Navbar";
-import NotFound from "../NotFound/NotFound";
-import Landing from "..Landing/Landing";
+//import Navbar from "../Navbar/Navbar";
+//import NotFound from "../NotFound/NotFound";
+//import Landing from "..Landing/Landing";
 import LoginPage from "../LoginPage/LoginPage";
-import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import ActivityPage from "../ActivityPage/ActivityPage";
-import NutritionPage from "../NutritionPage/NutritionPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
+//import NutritionPage from "../NutritionPage/NutritionPage";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -20,14 +20,17 @@ function App() {
     exercise: null,
   });
 
-  useEffect(async () => {
-    const data = await fetchUser();
-    if (data !== null && typeof data !== "undefined")
-      setAppState({
-        ...appState,
-        user: data.user,
-        token: data.token,
-      });
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchUser();
+      if (data !== null && typeof data !== "undefined")
+        setAppState({
+          ...appState,
+          user: data.user,
+          token: data.token,
+        });
+    }
+    fetchData();
   }, [appState.isAuthenticated]);
 
   const fetchUser = async () => {
@@ -38,28 +41,28 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Navbar user={appState.user} />
+        {/* <Navbar user={appState.user} /> */}
         <Routes>
-          <Route path="/" element={<Landing />} />
+          {/* <Route path="/" element={<Landing />} /> */}
           <Route
             path="/register"
-            element={<RegistrationPage setAppState={setAppState} />}
+            element={<RegisterPage setAppState={setAppState} />}
           />
           <Route
             path="/login"
             element={<LoginPage setAppState={setAppState} />}
           />
-          {/* <Route
-            path="/portal"
+          <Route
+            path="/activity"
             element={
-              <Portal
+              <ActivityPage
                 setAppState={setAppState}
                 appState={appState}
                 user={appState?.user}
               />
             }
-          /> */}
-          <Route path="*" element={<NotFound />} />
+          />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
