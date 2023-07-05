@@ -55,65 +55,65 @@ Implement any of the following features to improve the application:
 #### The `App` Component
 
 - [ ] Build the `App` component to:
-  - [ ] Be wrapped by an element with the class name of `app`
-  - [ ] Contain the routes for the app
-  - [ ] Render the `Navbar` component on every route
-  - [ ] Render a `BrowserRouter` component that contains a `Routes` component with the following routes:
-    - [ ] `/` - Render the `Landing` component
-    - [ ] `/login` - Render the `LoginPage` component
-    - [ ] `/register` - Render the `RegistrationPage` component
+  - [x] Be wrapped by an element with the class name of `app`
+  - [x] Contain the routes for the app
+  - [x] Render the `Navbar` component on every route
+  - [x] Render a `BrowserRouter` component that contains a `Routes` component with the following routes:
+    - [x] `/` - Render the `Landing` component
+    - [x] `/login` - Render the `LoginPage` component
+    - [x] `/register` - Render the `RegistrationPage` component
     - [ ] `/activity` - Render the `ActivityPage` component **only** if the user is logged in, otherwise it renders the `AccessForbidden` component
     - [ ] `/nutrition/*` - Render the `NutritionPage`component **only** if the user is logged in, otherwise it renders the`AccessForbidden` component
-    - [ ] `*` - Anything else renders the `NotFound` component
+    - [x] `*` - Anything else renders the `NotFound` component
 
 #### Handling API Requests
 
-- [ ] Create a `constants.js` file at the root of the project that exports the following variables:
-  - [ ] `PRODUCTION_API_BASE_URL` - set to whatever URL the production API is deployed at
-  - [ ] `DEVELOPMENT_API_BASE_URL` - set to `"http://localhost:3001"` for development
-  - [ ] `API_BASE_URL` - If `process.env.NODE_ENV` is `production`, set this to `PRODUCTION_API_BASE_URL`, otherwise set it to `DEVELOPMENT_API_BASE_URL`
-- [ ] Create a `services` directory at the root of the project.
-- [ ] Inside the `services` directory, create an `apiClient.js` file
-- [ ] In the `apiClient.js` file, import the `axios` package and the `API_BASE_URL` constant from the `constants.js` file.
-- [ ] Define a new class in that file called `ApiClient`.
-  - [ ] Give it a constructor function that accepts a single parameter - `remoteHostUrl`. The constructor should attach the `remoteHostUrl` parameter to a new instance with `this.remoteHostUrl = remoteHostUrl`. It should also set `this.token = null`.
-  - [ ] Export default a new instance of the `ApiClient` class.
-  - [ ] Add an additional method called `setToken` that accepts a single parameter - `token` and attaches it to the instance.
-  - [ ] Create a utility method called `request` that uses `axios` to issue HTTP requests
-  - [ ] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
-  - [ ] Add a `signup` method that uses the `request` method to send an HTTP request to the `auth/register` endpoint
-  - [ ] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
+- [x] Create a `constants.js` file at the root of the project that exports the following variables:
+  - [x] `PRODUCTION_API_BASE_URL` - set to whatever URL the production API is deployed at
+  - [x] `DEVELOPMENT_API_BASE_URL` - set to `"http://localhost:3001"` for development
+  - [x] `API_BASE_URL` - If `process.env.NODE_ENV` is `production`, set this to `PRODUCTION_API_BASE_URL`, otherwise set it to `DEVELOPMENT_API_BASE_URL`
+- [x] Create a `services` directory at the root of the project.
+- [x] Inside the `services` directory, create an `apiClient.js` file
+- [x] In the `apiClient.js` file, import the `axios` package and the `API_BASE_URL` constant from the `constants.js` file.
+- [x] Define a new class in that file called `ApiClient`.
+  - [x] Give it a constructor function that accepts a single parameter - `remoteHostUrl`. The constructor should attach the `remoteHostUrl` parameter to a new instance with `this.remoteHostUrl = remoteHostUrl`. It should also set `this.token = null`.
+  - [x] Export default a new instance of the `ApiClient` class.
+  - [x] Add an additional method called `setToken` that accepts a single parameter - `token` and attaches it to the instance.
+  - [x] Create a utility method called `request` that uses `axios` to issue HTTP requests
+  - [x] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
+  - [x] Add a `signup` method that uses the `request` method to send an HTTP request to the `auth/register` endpoint
+  - [x] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
   - [ ] **Add as many other methods as needed when making API requests.**
 
 #### Manage Authentication State
 
 Update the `App` component to manage authentication state:
 
-- [ ] Create a state variable called `appState` with a function called `setAppState` to update that state.
-  - [ ] Initialize `appState` with an object containing properties like `user`, `isAuthenticated`, `nutrition`, `sleep`, and `exercise`.
+- [x] Create a state variable called `appState` with a function called `setAppState` to update that state.
+  - [x] Initialize `appState` with an object containing properties like `user`, `isAuthenticated`, `nutrition`, `sleep`, and `exercise`.
 - [ ] Implement a `useEffect` hook to fetch the user data.
   - [ ] Define an asynchronous function named `fetchUser` to fetch the user data.
-    - [ ] Inside the `fetchUser` function, retrieve a token from `localStorage` using `localStorage.getItem("lifetracker_token")`
-    - [ ] Call the `setToken` function from the `apiClient.js` file.
-    - [ ] Make an API call to fetch user data using the `fetchUser` function from the `apiClient.js` file and extract the `data` from the response.
-    - [ ] If `data` is not null and not undefined, update the component's state using the `setAppState` function. Pass a callback to `setAppState` that takes the previous state and returns a new state object.
-    - [ ] In the callback, use the spread operator (`...`) to copy the previous state's properties to the new state object.
-    - [ ] Assign the following properties from the `data` object to the new state object:
-      - [ ] `user`
-      - [ ] `token`
+    - [x] Inside the `fetchUser` function, retrieve a token from `localStorage` using `localStorage.getItem("lifetracker_token")`
+    - [x] Call the `setToken` function from the `apiClient.js` file.
+    - [x] Make an API call to fetch user data using the `fetchUser` function from the `apiClient.js` file and extract the `data` from the response.
+    - [x] If `data` is not null and not undefined, update the component's state using the `setAppState` function. Pass a callback to `setAppState` that takes the previous state and returns a new state object.
+    - [x] In the callback, use the spread operator (`...`) to copy the previous state's properties to the new state object.
+    - [x] Assign the following properties from the `data` object to the new state object:
+      - [x] `user`
+      - [x] `token`
     - [ ] Assign at least **one** of the following properties from the `data` object to the new state object:
       - [ ] `nutrition`
       - [ ] `exercise`
       - [ ] `sleep`
     - [ ] Call the `setAppState` with a new state object to update the component's state.
-    - [ ] Outside the `fetchUser` function, call `fetchUser` to trigger the initial data fetch when the component mounts.
-    - [ ] The effect should be triggered whenever the value of `appState.isAuthenticated` changes.
+    - [x] Outside the `fetchUser` function, call `fetchUser` to trigger the initial data fetch when the component mounts.
+    - [x] The effect should be triggered whenever the value of `appState.isAuthenticated` changes.
 
 #### Implement the `Loading` Component
 
-- [ ] Build the **`Loading`** component to:
-  - [ ] Render JSX that is wrapped by an element with the class name of `loading`
-  - [ ] Render an element with the class name of `loading-message` that contains the text `"Loading"`
+- [x] Build the **`Loading`** component to:
+  - [x] Render JSX that is wrapped by an element with the class name of `loading`
+  - [x] Render an element with the class name of `loading-message` that contains the text `"Loading"`
 
 #### Implement the `Navbar` Component
 
@@ -141,47 +141,47 @@ Update the `App` component to manage authentication state:
 #### Implement the `LoginForm` Component
 
 - [ ] Build the **`LoginForm`** component to:
-  - [ ] Render JSX that is wrapped by an element with the class name of `login-form`
-  - [ ] Render an input element for the following fields:
-    - [ ] `email`
-    - [ ] `password`
-  - [ ] Each `input` element in the form should have a class name of `form-input` and should have the following props set:
-    - [ ] `name` - the `name` of the `input` field being rendered (`email`, `password`)
-    - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc.)
-    - [ ] `value` - the current value of the `input` element
-    - [ ] `onChange` - the `onChange` handler function
-  - [ ] Validate the `email` field. If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the class name of `error` indicating that the entry is not a valid email.
-  - [ ] Gracefully handle errors:
-    - [ ] If the user has attempted to login and gotten a `401` error, then an error message should be displayed in an element with the class name of `error` indicating that the `email` and `password` combination is incorrect.
-    - [ ] If the user has attempted to login and gotten a `400` or `422` error, then an error message should be displayed in an element with the class name of `error` indicating what went wrong.
-  - [ ] There should be a `button` element with the class name of `submit-login`:
-    - [ ] It should contain the text `"Login"`
-    - [ ] When clicked, it should call the `loginUser` function
+  - [x] Render JSX that is wrapped by an element with the class name of `login-form`
+  - [x] Render an input element for the following fields:
+    - [x] `email`
+    - [x] `password`
+  - [x] Each `input` element in the form should have a class name of `form-input` and should have the following props set:
+    - [x] `name` - the `name` of the `input` field being rendered (`email`, `password`)
+    - [x] `type` - the type of the `input` element (`text`, `email`, `number`, etc.)
+    - [x] `value` - the current value of the `input` element
+    - [x] `onChange` - the `onChange` handler function
+  - [x] Validate the `email` field. If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the class name of `error` indicating that the entry is not a valid email.
+  - [x] Gracefully handle errors:
+    - [x] If the user has attempted to login and gotten a `401` error, then an error message should be displayed in an element with the class name of `error` indicating that the `email` and `password` combination is incorrect.
+    - [x] If the user has attempted to login and gotten a `400` or `422` error, then an error message should be displayed in an element with the class name of `error` indicating what went wrong.
+  - [x] There should be a `button` element with the class name of `submit-login`:
+    - [x] It should contain the text `"Login"`
+    - [x] When clicked, it should call the `loginUser` function
 
 #### Implement the `LoginPage` Component
 
-- [ ] Build the **`LoginPage`** component to:
-  - [ ] Render JSX that is wrapped by an element with the class name of `login-page`
+- [x] Build the **`LoginPage`** component to:
+  - [x] Render JSX that is wrapped by an element with the class name of `login-page`
   - [ ] Using either a custom hook, context, or manually set state, check to see if a user is already logged in
     - [ ] If the user is already logged in, redirect them to the `/activity` page.
     - [ ] If no user is authenticated, render the `LoginForm` component and pass it any props it needs.
 
 #### Implement the `RegistrationForm` Component
 
-- [ ] Build the **`RegistrationForm`** component to:
-  - [ ] Render JSX that is wrapped by an element with the class name of `registration-form`
-  - [ ] Should render an input element for the following fields:
-    - [ ] `email`
-    - [ ] `username`
-    - [ ] `firstName`
-    - [ ] `lastName`
-    - [ ] `password`
-    - [ ] `passwordConfirm`
-  - [ ] Each `input` element in the form should have a class name of `form-input` and should have the following props set:
-    - [ ] `name` - the `name` of the `input` field being rendered (`email`, `username`, `firstName`, `lastName`, `password`, `passwordConfirm`)
-    - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc.)
-    - [ ] `value` - the current value of the `input` element
-    - [ ] `onChange` - the `onChange` handler function
+- [x] Build the **`RegistrationForm`** component to:
+  - [x] Render JSX that is wrapped by an element with the class name of `registration-form`
+  - [x] Should render an input element for the following fields:
+    - [x] `email`
+    - [x] `username`
+    - [x] `firstName`
+    - [x] `lastName`
+    - [x] `password`
+    - [x] `passwordConfirm`
+  - [x] Each `input` element in the form should have a class name of `form-input` and should have the following props set:
+    - [x] `name` - the `name` of the `input` field being rendered (`email`, `username`, `firstName`, `lastName`, `password`, `passwordConfirm`)
+    - [x] `type` - the type of the `input` element (`text`, `email`, `number`, etc.)
+    - [x] `value` - the current value of the `input` element
+    - [x] `onChange` - the `onChange` handler function
   - [ ] Validate the `email` field: If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the class name of `error` indicating that the entry is not a valid email.
   - [ ] Validate the `password` and `passwordConfirm` fields: If the user has entered text into the `password` and `passwordConfirm` fields and they don't match, then a message should be displayed in an element with the `className` of `error` with a message that contains the text: `passwords don't match`
   - [ ] Gracefully handle errors:
@@ -194,7 +194,7 @@ Update the `App` component to manage authentication state:
 #### Implement the `RegistrationPage` component
 
 - [ ] Build the **`RegistrationPage`** component to:
-  - [ ] Render JSX that is wrapped by an element with the class name of `registration-page`
+  - [x] Render JSX that is wrapped by an element with the class name of `registration-page`
   - [ ] Using either a custom hook, context, or manually handled state, check to see if a user is already logged in
     - [ ] If the user is already logged in, it should redirect them to the `/activity` page
     - [ ] If no user is authenticated, it should render the `RegistrationForm` component and pass it any props it needs
@@ -395,7 +395,7 @@ Here are the pieces of functionality that should be built out for the backend:
     - [ ] Write a `getDatabaseUri` function so that all the tests pass
   - [ ] Commit all work to `git`
   - [ ] The project should now be ready to go!
-- [] **PostgreSQL database**
+- [ ] **PostgreSQL database**
   - Time bring in a PostgreSQL database client as the application's persistence layer
   - Make sure the PostgreSQL server is running
   - Create two files at the root of the project:
@@ -434,22 +434,22 @@ Here are the pieces of functionality that should be built out for the backend:
   - [x] Commit all work to `git`
   - [x] A database client is now ready to be used!
 - [ ] **Server**
-  - [ ] Build out a bare-bones Express server with a health check route and an adequate middleware pipeline.
-  - [ ] Create a `utils` directory
-    - [ ] In the `utils` directory, create an `errors.js` file.
-    - [ ] Create error classes inside the file that will be used throughout the app.
+  - [x] Build out a bare-bones Express server with a health check route and an adequate middleware pipeline.
+  - [x] Create a `utils` directory
+    - [x] In the `utils` directory, create an `errors.js` file.
+    - [x] Create error classes inside the file that will be used throughout the app.
   - [ ] In the `app.test.js` file, write tests that:
     - [ ] Ensure that the Express application responds to `GET` requests to the `/` route with a JSON object of `{ "ping": "pong" }`
     - [ ] Check that middleware like `morgan` and `cors` exist, along with the JSON `body-parser` middleware from `express`
     - [ ] Include an `afterAll` hook that calls `await db.end()` so that any open database connections close when all the tests are finished.
-  - [ ] Add code to the `app.js` and `server.js` file to get a simple server running along with responding to `GET` requests to the `/` route
-  - [ ] Create error classes inside the `utils/errors.js` file.
-  - [ ] Add `404` and generic error handler middleware to the `app.js` file.
-  - [ ] In the `server.js` file:
-    - [ ] Import the Express app and the `config.js` file
-    - [ ] Have the `app` listen on the port specified by `config.PORT`.
-  - [ ] Commit all work to `git`
-  - [ ] Test out the fancy new Express server by starting it up in a new terminal window!
+  - [x] Add code to the `app.js` and `server.js` file to get a simple server running along with responding to `GET` requests to the `/` route
+  - [x] Create error classes inside the `utils/errors.js` file.
+  - [x] Add `404` and generic error handler middleware to the `app.js` file.
+  - [x] In the `server.js` file:
+    - [x] Import the Express app and the `config.js` file
+    - [x] Have the `app` listen on the port specified by `config.PORT`.
+  - [x] Commit all work to `git`
+  - [x] Test out the fancy new Express server by starting it up in a new terminal window!
 - [ ] **Common Test Configuration**
   - [ ] It would probably be helpful to create some common test functions that can be used throughout the application's testing suite.
   - [ ] Create a new directory called `tests`
@@ -472,13 +472,13 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] Commit all work to `git`
 - [ ] **Authentication**
   - [ ] Go ahead and build out a full-fledged authentication flow using PostgreSQL, `bcrypt`, and JSON Web Tokens. For it all to work, we'll need a `User` model, a `security` middleware, some `tokens` utility functions, and the appropriate `auth` routes.
-  - [ ] Add new directories for `models`, `routes`, and `middleware`
+  - [x] Add new directories for `models`, `routes`, and `middleware`
   - [ ] The **User** model
     - [ ] In the `models` directory, create two new files: `models/user.js` and `models/user.test.js`
-      - [ ] The `User` model should have **at least** the following static methods:
-        - [ ] `login`
-        - [ ] `register`
-        - [ ] `fetchUserByEmail`
+      - [x] The `User` model should have **at least** the following static methods:
+        - [x] `login`
+        - [x] `register`
+        - [x] `fetchUserByEmail`
     - [ ] In the `models/user.test.js` file:
       - [ ] Test the `login` method. Write test cases for:
         - [ ] User can login successfully with proper credentials
@@ -494,14 +494,14 @@ Here are the pieces of functionality that should be built out for the backend:
         - [ ] Invalid emails are handled correctly
       - [ ] It will probably be important to use the `beforeAll`, `afterAll`, `beforeEach`, and `afterEach` hooks to add and delete users from the database before running the tests
     - [ ] In the `models/user.js` file:
-      - [ ] Import the `bcrypt` package, the `db` client, and the app `config`.
+      - [x] Import the `bcrypt` package, the `db` client, and the app `config`.
       - [ ] Implement the features outlined in the tests until they're all passing.
   - [ ] Commit all work to `git`
   - [ ] The **tokens** utility functions
-    - [ ] In the `utils` directory, create two new files: `utils/tokens.js` and `utils/tokens.test.js`
-      - [ ] At the bare minimum, two functions will be needed:
-        - [ ] One that accepts a JSON payload as an argument and converts it into a JWT
-        - [ ] One that accepts a JWT as an argument, validates it, and returns the JSON payload encoded within - if it's valid
+    - [x] In the `utils` directory, create two new files: `utils/tokens.js` and `utils/tokens.test.js`
+      - [x] At the bare minimum, two functions will be needed:
+        - [x] One that accepts a JSON payload as an argument and converts it into a JWT
+        - [x] One that accepts a JWT as an argument, validates it, and returns the JSON payload encoded within - if it's valid
     - [ ] In the `utils/tokens.test.js` file:
       - [ ] Write test cases for:
         - [ ] Can create valid JWT tokens for user payloads
@@ -511,7 +511,7 @@ Here are the pieces of functionality that should be built out for the backend:
       - [ ] Implement the features outlined in the tests until they're all passing
   - [ ] Commit all work to `git`
   - [ ] The **security** middleware
-    - [ ] In the `middleware` directory, create two new files: `middleware/security.js` and `middleware/security.test.js`
+    - [x] In the `middleware` directory, create two new files: `middleware/security.js` and `middleware/security.test.js`
       - [ ] One middleware will be responsible for extracting a user from a valid JWT in the request:
         - [ ] Checking the `Authentication` header of each request for the existence of a JWT.
         - [ ] If one exists, it should extract the token, validate it, extract the encoded JSON payload, and attach it to the response's `locals` property
@@ -536,10 +536,10 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] The **/auth** routes
     - [ ] In the `routes` directory, create two new files: `routes/auth.js` and `routes/auth.test.js`
       - [ ] A new Express router should be created. It should handle:
-        - [ ] A `GET` request to the `/me` endpoint
+        - [x] A `GET` request to the `/me` endpoint
           - [ ] It should send a JSON response back to the client with the user info like so: `{ "user": { "email": "user@gmail.com", ... } }`
-        - [ ] A `POST` request to the `/login` endpoint
-          - [ ] It should accept a request body with `email` and `password` keys
+        - [x] A `POST` request to the `/login` endpoint
+          - [x] It should accept a request body with `email` and `password` keys
           - [ ] It should send a JSON response back to the client with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
         - [ ] A `POST` request to the `/register` endpoint
           - [ ] It should accept a request body with `email`, `username`, `firstName`, `lastName`, and `password` keys

@@ -3,13 +3,16 @@ const { SECRET_KEY } = require("../config");
 const { InvalidTokenError } = require("./errors");
 
 async function genToken(data) {
-  return jwt.sign(data, SECRET_KEY);
+  return jwt.sign(data, SECRET_KEY, {
+    expiresIn: "1h",
+  });
 }
 
-async function createUserToken({ userId, userEmail }) {
+async function createUserToken(userId, userEmail, userName) {
   const newUser = {
     id: userId,
     email: userEmail,
+    firstName: userName,
   };
   return genToken(newUser);
 }

@@ -7,6 +7,7 @@ class ApiClient {
     this.remoteHostUrl = remoteHostUrl; //Alter later?
   }
 
+  // Set user token for front end
   setToken(token) {
     this.token = token;
   }
@@ -29,16 +30,18 @@ class ApiClient {
       const res = await axios({ url, method, data, params, headers }); // LOOK AT DOCUMENTATION LATER !!!
       return { data: res.data, error: null, message: null };
     } catch (error) {
-      // If failed, we check for a 404 error, otherwise we return the error
       console.error("APIclient.makeRequest.error", error.response);
+      // If failed, we check for a 404 error, otherwise we return the error
       if (error?.response?.status === 404)
         return { data: null, error: "Not found" };
+      // Checking that error message exists -- Syntax thing
       const message = error?.response?.data?.error?.message;
       return { data: null, error: error?.response, message };
     }
   }
 
   async register(creds) {
+    // Make register post request using generalized request method above with creds
     return await this.request({
       endpoint: `auth/register`,
       method: `POST`,
@@ -47,6 +50,7 @@ class ApiClient {
   }
 
   async login(creds) {
+    // Make login post request using generalized request method above with creds
     return await this.request({
       endpoint: `auth/login`,
       method: `POST`,
@@ -55,6 +59,7 @@ class ApiClient {
   }
 
   async fetchUserFromToken(userId) {
+    // Make me get request using generalized request method above with userId
     return await this.request({
       endpoint: `auth/me`,
       method: `GET`,
@@ -63,4 +68,5 @@ class ApiClient {
   }
 }
 
+// Export class -- hardcoded localhost
 export default new ApiClient("http://localhost:3001");

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 import apiClient from "../../services/apiClient";
 import "./App.css";
 //import Navbar from "../Navbar/Navbar";
@@ -20,15 +21,21 @@ function App() {
     exercise: null,
   });
 
+  // Combine two functions below into one later
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchUser();
+      const token = await fetchUser();
+      const data = jwtDecode(token);
       if (data !== null && typeof data !== "undefined")
-        setAppState({
-          ...appState,
-          user: data.user,
-          token: data.token,
-        });
+        setAppState((s) => ({
+          ...s,
+          user: {
+            userId: data.id,
+            userEmail: data.email,
+            firstName: data.firstName,
+          },
+          token: token,
+        }));
     }
     fetchData();
   }, [appState.isAuthenticated]);
@@ -36,6 +43,7 @@ function App() {
   const fetchUser = async () => {
     const token = localStorage.getItem("lifetracker_token");
     apiClient.setToken(token);
+    return token;
   };
 
   return (
@@ -50,7 +58,9 @@ function App() {
           />
           <Route
             path="/login"
-            element={<LoginPage setAppState={setAppState} />}
+            element={
+              <LoginPage appState={appState} setAppState={setAppState} />
+            }
           />
           <Route
             path="/activity"

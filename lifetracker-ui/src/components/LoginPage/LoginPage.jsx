@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import Loading from "../Loading/Loading";
 import apiClient from "../../services/apiClient";
 
-const LoginPage = ({ setAppState }) => {
+const LoginPage = ({ appState, setAppState }) => {
   const navigate = useNavigate();
+
+  // Setting up states
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
@@ -13,10 +15,17 @@ const LoginPage = ({ setAppState }) => {
     password: "",
   });
 
+  // Middleware using front end
+  useEffect(() => {
+    console.log(appState.user);
+    if (appState.user !== null) navigate("/activity");
+  }, [appState.user]);
+
   // Handles form input change -- Saves form input into form state & checks for errors
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
-      // Error Handling for email input -- HAVE YET TO USE THIS (maybe get rid of databaseErrors and map over errors)
+      // Reset form errors -- Used to conditionally render email errors
+      setErrors((e) => ({ ...e, form: null }));
       if (event.target.value.indexOf("@") === -1) {
         setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
       } else {
@@ -46,22 +55,27 @@ const LoginPage = ({ setAppState }) => {
     //    setErrors((e) => ({ ...e, form: null }));
     //  }
 
+    // Try catch block for database call -- Login
     try {
+      // Make login post request from the front end to the back end
       const { data, error, message } = await apiClient.login(form);
+      // Error handling with backend & frontend connection
       if (error) {
         setErrors((e) => ({
           ...e,
           form: String(message),
-          databaseError: true,
         }));
         setIsLoading(false);
         return;
       }
-
+      // If a user is returned, user exists -- save token in localStorage, otherwise user does not exist
       if (data) {
-        // setAppState(data)
-        setAppState((s) => ({ ...s, user: data.user, isAuthenticated: true }));
-        localStorage.setItem("vaccine_hub_token", data.token);
+        setAppState((s) => ({
+          ...s,
+          isAuthenticated: true,
+        }));
+        console.log(data);
+        localStorage.setItem("lifetracker_token", data.token);
         navigate("/activity");
       } else {
         setErrors((e) => ({
@@ -71,12 +85,12 @@ const LoginPage = ({ setAppState }) => {
         setIsLoading(false);
       }
     } catch (err) {
+      // Error handling back-end side
       console.log(err);
       const message = err?.response?.data?.error?.message;
       setErrors((e) => ({
         ...e,
         form: message ? String(message) : String(err),
-        databaseError: true,
       }));
       setIsLoading(false);
     }
@@ -88,15 +102,21 @@ const LoginPage = ({ setAppState }) => {
       {!isLoading && (
         <div className="login-container">
           <h2>Login</h2>
-          <p className="error">{errors.databaseError ? errors.form : ""}</p>
+          <p className="error">
+            {errors.form && errors.email === null ? errors.form : ""}
+          </p>
           <form className="login-form" onSubmit={handleOnSubmit}>
             <label htmlFor="email">Email:</label>
             <input
-              //   className={errors.form ? "error" : ""} -- For error handling
+              className={errors.form && errors.email !== null ? "error" : ""}
               type="text"
               id="email"
               name="email"
-              placeholder="abc@abc.org"
+              placeholder={
+                errors.form && errors.email !== null
+                  ? errors.email
+                  : "abc@abc.org"
+              }
               onChange={handleOnInputChange}
               required
             />
@@ -106,6 +126,7 @@ const LoginPage = ({ setAppState }) => {
               type="password"
               id="password"
               name="password"
+              placeholder="Password"
               onChange={handleOnInputChange}
               required
             />

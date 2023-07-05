@@ -53,9 +53,12 @@ class User {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid === true) {
-        const userToken = createUserToken(user.id, user.email);
-        // return this._createPublicUser(user);
-        return userToken;
+        const userToken = await createUserToken(
+          user.id,
+          user.email,
+          user.firstName
+        );
+        return { token: userToken };
       }
     }
 
@@ -130,6 +133,7 @@ class User {
   static async fetchUserByEmail(email) {
     const result = await db.query(
       `SELECT id,
+              username,
               email, 
               password,
               first_name AS "firstName",
