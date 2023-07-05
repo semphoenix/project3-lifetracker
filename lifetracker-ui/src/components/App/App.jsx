@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import apiClient from "../../services/apiClient";
 import "./App.css";
-//import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 //import NotFound from "../NotFound/NotFound";
 //import Landing from "..Landing/Landing";
 import LoginPage from "../LoginPage/LoginPage";
@@ -14,28 +14,16 @@ import RegisterPage from "../RegisterPage/RegisterPage";
 function App() {
   const [appState, setAppState] = useState({
     user: null,
-    isAuthenticated: null,
+    isAuthenticated: false,
     token: null,
     nutrition: null,
     sleep: null,
     exercise: null,
   });
 
-  // Combine two functions below into one later
   useEffect(() => {
     async function fetchData() {
-      const token = await fetchUser();
-      const data = jwtDecode(token);
-      if (data !== null && typeof data !== "undefined")
-        setAppState((s) => ({
-          ...s,
-          user: {
-            userId: data.id,
-            userEmail: data.email,
-            firstName: data.firstName,
-          },
-          token: token,
-        }));
+      await fetchUser();
     }
     fetchData();
   }, [appState.isAuthenticated]);
@@ -43,13 +31,34 @@ function App() {
   const fetchUser = async () => {
     const token = localStorage.getItem("lifetracker_token");
     apiClient.setToken(token);
-    return token;
+    if (token !== null && typeof token !== "undefined") {
+      const data = jwtDecode(token);
+      setAppState((s) => ({
+        ...s,
+        isAuthenticated: true,
+        user: {
+          userId: data.id,
+          userEmail: data.email,
+          firstName: data.firstName,
+        },
+        token: token,
+      }));
+    } else {
+      setAppState((s) => ({
+        ...s,
+        user: null,
+        token: null,
+        nutrition: null,
+        sleep: null,
+        exercise: null,
+      }));
+    }
   };
 
   return (
     <div className="app">
       <BrowserRouter>
-        {/* <Navbar user={appState.user} /> */}
+        <Navbar appState={appState} setAppState={setAppState} />
         <Routes>
           {/* <Route path="/" element={<Landing />} /> */}
           <Route

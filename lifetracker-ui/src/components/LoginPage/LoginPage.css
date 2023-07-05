@@ -1,7 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
   background-color: rgb(226, 224, 224);
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

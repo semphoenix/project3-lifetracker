@@ -15,11 +15,11 @@ const LoginPage = ({ appState, setAppState }) => {
     password: "",
   });
 
-  // Middleware using front end
+  // Middleware using front end -- Does not allow user to go to login page if already logged in
   useEffect(() => {
     console.log(appState.user);
-    if (appState.user !== null) navigate("/activity");
-  }, [appState.user]);
+    if (appState.isAuthenticated) navigate("/activity");
+  }, [appState.isAuthenticated]);
 
   // Handles form input change -- Saves form input into form state & checks for errors
   const handleOnInputChange = (event) => {
@@ -74,7 +74,6 @@ const LoginPage = ({ appState, setAppState }) => {
           ...s,
           isAuthenticated: true,
         }));
-        console.log(data);
         localStorage.setItem("lifetracker_token", data.token);
         navigate("/activity");
       } else {
