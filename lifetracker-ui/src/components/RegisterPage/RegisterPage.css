@@ -1,16 +1,13 @@
-body {
-  font-family: Arial, sans-serif;
+.register-page {
   background-color: rgb(226, 224, 224);
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  padding: 0;
+  margin: -10px;
 }
 
-.register-container {
+.register-page .register-container {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
   padding: 20px;
@@ -21,16 +18,16 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+.register-page .register-container h2 {
   text-align: center;
 }
 
-label {
+.register-page .register-container label {
   display: block;
   margin-bottom: 5px;
 }
 
-input {
+.register-page .register-container input {
   width: 95%;
   padding: 10px;
   border-radius: 5px;
@@ -38,13 +35,13 @@ input {
   margin-bottom: 15px;
 }
 
-.error,
+.register-page .register-container .error,
 input.error::placeholder {
   color: red;
   opacity: 0.7;
 }
 
-button {
+.register-page button {
   background-color: #4caf50;
   color: #fff;
   padding: 10px 15px;
@@ -54,6 +51,6 @@ button {
   width: 100%;
 }
 
-button:hover {
+.register-page button:hover {
   background-color: #45a049;
 }

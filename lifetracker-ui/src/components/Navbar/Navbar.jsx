@@ -15,35 +15,31 @@ export default function Navbar({ appState, setAppState }) {
 
   return (
     <nav className="Navbar">
-      <ul className="logo">
-        <li>
-          <Link to="/">
-            {/* <img src={bottle_logo} alt="logo" /> */}
-            <h2>VACCINE HUB</h2>
-          </Link>
-        </li>
-      </ul>
+      <div className="logo">
+        <Link to="/">
+          {/* <img src={bottle_logo} alt="logo" /> */}
+          <h2>LifeTracker Application</h2>
+        </Link>
+      </div>
+      <div className="main-nav-items">
+        <button className="activity">Activity</button>
+        <button className="exercise">Exercise</button>
+        <button className="nutrition">Nutrition</button>
+        <button className="sleep">Sleep</button>
+      </div>
       {appState.user !== null ? (
-        <ul>
-          <li>
-            <button className="btn ghost" onClick={handleLogout}>
-              Logout
-            </button>
-          </li>
-        </ul>
+        <div className="logout">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       ) : (
-        <ul>
-          <li>
-            <Link to="/login">
-              <button className="btn ghost">Login</button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/register">
-              <button className="btn primary">Register</button>
-            </Link>
-          </li>
-        </ul>
+        <div className="login-register">
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/register">
+            <button>Register</button>
+          </Link>
+        </div>
       )}
     </nav>
   );

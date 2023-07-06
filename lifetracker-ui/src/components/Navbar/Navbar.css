@@ -1,13 +1,40 @@
-/* .Navbar {
-  padding-top: 20px;
-} */
 .Navbar {
-  padding: 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  flex-grow: 1;
+  width: 250px;
+}
+
+.main-nav-items {
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.login-register,
+.logout {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-register button,
+.logout button {
+  margin-left: 10px;
+}
+
+/* .Navbar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 50px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  width: 100%;
 }
 .Navbar ul {
   display: flex;
@@ -19,14 +46,43 @@
   flex-direction: row;
   align-items: center;
 }
-.Navbar ul li a {
+.Navbar .main-nav-items {
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* justify-content: center; */
+
+.Navbar ul li a:link {
+  text-decoration: none;
 }
+
+.Navbar .logo {
+  justify-content: flex-start;
+}
+
 .Navbar .logo h2 {
   font-weight: 900;
   font-size: 30px;
   margin-left: 20px;
-  color: var(--deep-blue);
+  color: #4caf50;
+}
+
+a {
+  text-decoration: none;
+}
+
+.Navbar button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  margin: auto 10px;
+  font-size: medium;
+}
+
+.Navbar button:hover {
+  background-color: #45a049;
 }

@@ -96,7 +96,7 @@ const LoginPage = ({ appState, setAppState }) => {
   };
 
   return (
-    <>
+    <div className="login-page">
       {isLoading && <Loading />}
       {!isLoading && (
         <div className="login-container">
@@ -134,7 +134,7 @@ const LoginPage = ({ appState, setAppState }) => {
           </form>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -78,7 +78,7 @@ const RegisterPage = ({ setAppState }) => {
   };
 
   return (
-    <>
+    <div className="register-page">
       {isLoading && <Loading />}
       {!isLoading && (
         <div className="register-container">
@@ -151,7 +151,7 @@ const RegisterPage = ({ setAppState }) => {
           </form>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
