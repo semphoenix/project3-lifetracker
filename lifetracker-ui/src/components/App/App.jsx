@@ -10,6 +10,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import ActivityPage from "../ActivityPage/ActivityPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 //import NutritionPage from "../NutritionPage/NutritionPage";
+import ExercisePage from "../ExercisePage/ExercisePage";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -75,6 +76,16 @@ function App() {
             path="/activity"
             element={
               <ActivityPage
+                setAppState={setAppState}
+                appState={appState}
+                user={appState?.user}
+              />
+            }
+          />
+          <Route
+            path="/exercise"
+            element={
+              <ExercisePage
                 setAppState={setAppState}
                 appState={appState}
                 user={appState?.user}
