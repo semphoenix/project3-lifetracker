@@ -1,6 +1,47 @@
-.ExercisePage .button {
+.exercise-page {
+  background-color: rgb(226, 224, 224);
   display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh;
+  margin: -10px;
 }
-.ExercisePage .button button {
-  flex: 1;
+
+.exercise-container {
+  text-align: center;
+}
+
+.exercise-page .exercise-heading {
+  align-items: center;
+  font-size: 50px;
+}
+
+.exercise-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-around;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.exercise-grid .exercise {
+  background: #4caf4f97;
+  border-radius: 10px;
+  margin: 10px;
+  position: relative;
+}
+
+.exercise-page button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.exercise-page button:hover {
+  background-color: #45a049;
 }

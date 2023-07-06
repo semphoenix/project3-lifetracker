@@ -5,12 +5,13 @@ import apiClient from "../../services/apiClient";
 import "./App.css";
 import Navbar from "../Navbar/Navbar";
 //import NotFound from "../NotFound/NotFound";
-//import Landing from "..Landing/Landing";
 import LoginPage from "../LoginPage/LoginPage";
-import ActivityPage from "../ActivityPage/ActivityPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
+import ActivityPage from "../ActivityPage/ActivityPage";
 //import NutritionPage from "../NutritionPage/NutritionPage";
 import ExercisePage from "../ExercisePage/ExercisePage";
+import ExercisePageForm from "../ExercisePageForm/ExercisePageForm";
+import Home from "../Home/Home";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -61,7 +62,7 @@ function App() {
       <BrowserRouter>
         <Navbar appState={appState} setAppState={setAppState} />
         <Routes>
-          {/* <Route path="/" element={<Landing />} /> */}
+          <Route path="/" element={<Home />} />
           <Route
             path="/register"
             element={<RegisterPage setAppState={setAppState} />}
@@ -75,22 +76,16 @@ function App() {
           <Route
             path="/activity"
             element={
-              <ActivityPage
-                setAppState={setAppState}
-                appState={appState}
-                user={appState?.user}
-              />
+              <ActivityPage setAppState={setAppState} appState={appState} />
             }
           />
           <Route
             path="/exercise"
-            element={
-              <ExercisePage
-                setAppState={setAppState}
-                appState={appState}
-                user={appState?.user}
-              />
-            }
+            element={<ExercisePage appState={appState} />}
+          />
+          <Route
+            path="/exercise/create"
+            element={<ExercisePageForm appState={appState} />}
           />
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>

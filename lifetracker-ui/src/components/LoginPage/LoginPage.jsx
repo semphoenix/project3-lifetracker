@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import Loading from "../Loading/Loading";
 import apiClient from "../../services/apiClient";
@@ -17,7 +17,6 @@ const LoginPage = ({ appState, setAppState }) => {
 
   // Middleware using front end -- Does not allow user to go to login page if already logged in
   useEffect(() => {
-    console.log(appState.user);
     if (appState.isAuthenticated) navigate("/activity");
   }, [appState.isAuthenticated]);
 
@@ -43,17 +42,6 @@ const LoginPage = ({ appState, setAppState }) => {
     setIsLoading(true);
     // Set form errors
     setErrors((e) => ({ ...e, form: null }));
-
-    // This is commented out because I was trying to make this component less expensive -- theres no need to make
-    // database calls if the form is invalid
-    //  if (errors.email !== null) {
-    //    setErrors((e) => ({ ...e, form: "Invalid email" }));
-    //    console.log("Stop early");
-    //    setIsLoading(false);
-    //    return;
-    //  } else {
-    //    setErrors((e) => ({ ...e, form: null }));
-    //  }
 
     // Try catch block for database call -- Login
     try {

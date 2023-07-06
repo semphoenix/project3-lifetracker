@@ -1,0 +1,65 @@
+.exercise-form-page {
+  background-color: rgb(226, 224, 224);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0px;
+}
+
+.exercise-form-page .exercise-form-container {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 400px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-form-page .exercise-form-container h2 {
+  text-align: center;
+}
+
+.exercise-form-page .exercise-form-container label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.exercise-form-page .exercise-form-container input {
+  width: 95%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.exercise-form-page .exercise-form-container select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+.exercise-form-page .exercise-form-container .error,
+input.error::placeholder {
+  color: red;
+  opacity: 0.7;
+}
+
+.exercise-form-page button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.exercise-form-page button:hover {
+  background-color: #45a049;
+}

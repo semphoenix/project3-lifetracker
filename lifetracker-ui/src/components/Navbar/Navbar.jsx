@@ -3,7 +3,6 @@ import logo from "../../assets/logo.png";
 import "./Navbar.css";
 
 export default function Navbar({ appState, setAppState }) {
-  console.log(appState);
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("lifetracker_token");
@@ -21,7 +20,7 @@ export default function Navbar({ appState, setAppState }) {
         <Link to="/">
           {/* <img src={logo} alt="logo" className="logo-image" /> */}
           {appState.user ? (
-            <h2>LifeTracker: {appState.user.firstName.toUpperCase()}</h2>
+            <h2>LifeTracker For: {appState.user.firstName.toUpperCase()}</h2>
           ) : (
             <h2>LifeTracker Application</h2>
           )}

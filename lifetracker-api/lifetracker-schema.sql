@@ -25,7 +25,7 @@ CREATE TABLE exercise (
    name TEXT NOT NULL,
    category TEXT NOT NULL,
    duration INT NOT NULL,
-   intensity BIT NOT NULL,
+   intensity INT NOT NULL,
    user_id INT NOT NULL, 
    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

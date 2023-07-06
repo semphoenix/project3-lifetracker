@@ -66,6 +66,24 @@ class ApiClient {
       data: userId,
     });
   }
+
+  async fetchExerciseFromUserId(userId) {
+    // Make me get request using generalized request method above with userId
+    return await this.request({
+      endpoint: `auth/exercise/:id`,
+      method: `GET`,
+      data: userId,
+    });
+  }
+
+  async createExercise(creds) {
+    // Make me get request using generalized request method above with userId
+    return await this.request({
+      endpoint: `auth/exercise/create`,
+      method: `POST`,
+      data: creds,
+    });
+  }
 }
 
 // Export class -- hardcoded localhost
