@@ -20,7 +20,8 @@ class Nutrition {
     return result.rows;
   }
   static async createNutrition(creds) {
-    const { userId, name, category, quantity, calories, image_url } = creds;
+    let { userId, name, category, quantity, calories, image_url } = creds;
+    if (image_url === undefined || image_url.trim() === "") image_url = "none";
     const requiredCreds = [
       "userId",
       "name",
@@ -32,7 +33,7 @@ class Nutrition {
     try {
       validateFields({
         required: requiredCreds,
-        obj: creds,
+        obj: { userId, name, category, quantity, calories, image_url },
         location: "create nutrition",
       });
     } catch (err) {

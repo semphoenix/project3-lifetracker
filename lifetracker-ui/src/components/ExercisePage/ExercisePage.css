@@ -40,7 +40,7 @@
   box-shadow: 10px 5px 5px #38873b66;
 }
 
-.exercise-page button {
+.exercise-page .exercise-container button {
   background-color: #4caf50;
   color: #fff;
   padding: 10px 15px;

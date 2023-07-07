@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import apiClient from "../../services/apiClient";
 import "./NutritionPage.css";
+import no_image from "../../assets/no_image.png";
 
 const NutritionPage = ({ appState, setAppState }) => {
   useEffect(() => {
@@ -21,6 +22,10 @@ const NutritionPage = ({ appState, setAppState }) => {
       <h3>
         {element.name} <span>{element.category}</span>
       </h3>
+      <img
+        src={element.image_url !== "none" ? element.image_url : no_image}
+        alt="image of food"
+      />
       <p>Calories: {element.calories}</p>
       <p>Quantity: {element.quantity}</p>
     </div>
