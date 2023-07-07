@@ -8,6 +8,7 @@
 
 .exercise-container {
   text-align: center;
+  width: 100%;
 }
 
 .not-logged-in {
@@ -36,7 +37,7 @@
   border-radius: 10px;
   margin: 10px;
   position: relative;
-  width: 15%;
+  width: 10%;
   box-shadow: 10px 5px 5px #38873b66;
 }
 
