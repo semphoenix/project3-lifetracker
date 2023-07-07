@@ -47,6 +47,7 @@ const ExercisePageForm = ({ appState }) => {
         }));
         return;
       }
+      setIsLoading(false);
     } catch (err) {
       // Error handling back-end side
       console.log(err);
@@ -54,9 +55,9 @@ const ExercisePageForm = ({ appState }) => {
         ...e,
         form: message ? String(message) : String(err),
       }));
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
+    navigate("/exercise");
   };
 
   return (

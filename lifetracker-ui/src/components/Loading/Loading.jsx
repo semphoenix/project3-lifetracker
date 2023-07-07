@@ -1,10 +1,12 @@
 import React from "react";
+import load from "../../assets/load.png";
+import "./Loading.css";
 
 const Loading = () => {
   return (
     <div className="loading">
       {/* GET A GIF */}
-      <h2 className="loading-message">Loading</h2>
+      <img src={load} alt="loading icon" className="loading" />
     </div>
   );
 };

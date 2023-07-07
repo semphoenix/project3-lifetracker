@@ -70,9 +70,9 @@ class ApiClient {
   async fetchExerciseFromUserId(userId) {
     // Make me get request using generalized request method above with userId
     return await this.request({
-      endpoint: `auth/exercise/:id`,
+      endpoint: `auth/exercise/${userId}`,
       method: `GET`,
-      data: userId,
+      data: {},
     });
   }
 
@@ -80,6 +80,24 @@ class ApiClient {
     // Make me get request using generalized request method above with userId
     return await this.request({
       endpoint: `auth/exercise/create`,
+      method: `POST`,
+      data: creds,
+    });
+  }
+
+  async fetchNutritionFromUserId(userId) {
+    // Make me get request using generalized request method above with userId
+    return await this.request({
+      endpoint: `auth/nutrition/${userId}`,
+      method: `GET`,
+      data: {},
+    });
+  }
+
+  async createNutrition(creds) {
+    // Make me get request using generalized request method above with userId
+    return await this.request({
+      endpoint: `auth/nutrition/create`,
       method: `POST`,
       data: creds,
     });

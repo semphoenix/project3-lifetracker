@@ -1,19 +1,60 @@
-.NutritionPage {
-  background: #f7fafc;
-}
-.NutritionPage .nutrition-feed {
+.nutrition-page {
+  background-color: rgb(226, 224, 224);
   display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: -10px;
+}
+
+.nutrition-container {
+  text-align: center;
+}
+
+.nutrition span {
+  background-color: #4caf50;
+}
+
+.not-logged-in {
+  font-family: Arial, sans-serif;
+  font-size: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+.nutrition-page .nutrition-heading {
   align-items: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 600px;
+  font-size: 50px;
 }
-.white {
-  color: white;
-}
-.NutritionPage .button {
+
+.nutrition-grid {
   display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-around;
+  border-radius: 10px;
+  margin: 10px;
 }
-.NutritionPage .button button {
-  flex: 1;
+
+.nutrition-grid .nutrition {
+  background: #4caf4f97;
+  border-radius: 10px;
+  margin: 10px;
+  position: relative;
+  width: 100%;
+  box-shadow: 10px 5px 5px #38873b66;
+}
+
+.nutrition-page button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+}
+
+.nutrition-page button:hover {
+  background-color: #45a049;
 }

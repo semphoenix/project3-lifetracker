@@ -2,12 +2,18 @@
   background-color: rgb(226, 224, 224);
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   height: 100vh;
   margin: -10px;
 }
 
 .exercise-container {
+  text-align: center;
+}
+
+.not-logged-in {
+  font-family: Arial, sans-serif;
+  font-size: 100px;
+  margin: auto;
   text-align: center;
 }
 
@@ -30,6 +36,8 @@
   border-radius: 10px;
   margin: 10px;
   position: relative;
+  width: 15%;
+  box-shadow: 10px 5px 5px #38873b66;
 }
 
 .exercise-page button {
@@ -40,6 +48,7 @@
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  max-width: 200px;
 }
 
 .exercise-page button:hover {

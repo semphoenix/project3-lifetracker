@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import apiClient from "../../services/apiClient";
 import "./ExercisePage.css";
 
-const ExercisePage = ({ appState }) => {
-  const sampleList = [
-    { name: "test1", duration: "10", intesity: "9" },
-    { name: "test2", duration: "100", intesity: "7" },
-  ];
-  //   const exerciseList = appState.exercise?.map((element, index) => (
-  //     <div className="exercise" key={index}>
-  //       <h3>{element.name}</h3>
-  //       <p>Duration: {element.duration}</p>
-  //       <p>Intensity: {element.intesity}/10</p>
-  //     </div>
-  const exerciseList = sampleList.map((element, index) => (
+const ExercisePage = ({ appState, setAppState }) => {
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (appState.user?.userId !== null) {
+        const userData = await apiClient.fetchExerciseFromUserId(
+          appState.user.userId
+        );
+        console.log(userData.data[0].intensity);
+        setAppState((s) => ({ ...s, exercise: userData.data }));
+      }
+    };
+    fetchUserData();
+  }, [appState.user]);
+
+  const exerciseList = appState.exercise?.map((element, index) => (
     <div className="exercise" key={index}>
       <h3>{element.name}</h3>
       <p>Duration: {element.duration}</p>
-      <p>Intensity: {element.intesity}/10</p>
+      <p>Intensity: {element.intensity}/10</p>
     </div>
   ));
   return (

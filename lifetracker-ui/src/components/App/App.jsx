@@ -12,6 +12,7 @@ import ActivityPage from "../ActivityPage/ActivityPage";
 import ExercisePage from "../ExercisePage/ExercisePage";
 import ExercisePageForm from "../ExercisePageForm/ExercisePageForm";
 import Home from "../Home/Home";
+import NutritionPage from "../NutritionPage/NutritionPage";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -81,11 +82,19 @@ function App() {
           />
           <Route
             path="/exercise"
-            element={<ExercisePage appState={appState} />}
+            element={
+              <ExercisePage appState={appState} setAppState={setAppState} />
+            }
           />
           <Route
             path="/exercise/create"
             element={<ExercisePageForm appState={appState} />}
+          />
+          <Route
+            path="/nutrition"
+            element={
+              <NutritionPage appState={appState} setAppState={setAppState} />
+            }
           />
           {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const Exercise = require("../models/exercise");
+const Nutrition = require("../models/nutrition");
 
 router.get("/me", async function (req, res, next) {
   try {
@@ -42,6 +43,24 @@ router.get("/exercise/:id", async function (req, res, next) {
 router.post("/exercise/create", async function (req, res, next) {
   try {
     const user = await Exercise.createExercise(req.body);
+    return res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/nutrition/:id", async function (req, res, next) {
+  try {
+    const exerciseData = await Nutrition.fetchByUserId(req.params.id);
+    return res.status(200).json(exerciseData);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/nutrition/create", async function (req, res, next) {
+  try {
+    const user = await Nutrition.createNutrition(req.body);
     return res.status(200).json(user);
   } catch (err) {
     next(err);

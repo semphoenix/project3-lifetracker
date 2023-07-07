@@ -15,16 +15,18 @@ export default function Navbar({ appState, setAppState }) {
 
   return (
     <nav className="Navbar">
+      <span>
+        <Link to="/">
+          <img src={logo} alt="logo" className="logo-image" />
+        </Link>
+      </span>
       <div className="logo">
         {/* Instead, you could capitalize the first letter of every first and lastname in the database */}
-        <Link to="/">
-          {/* <img src={logo} alt="logo" className="logo-image" /> */}
-          {appState.user ? (
-            <h2>LifeTracker For: {appState.user.firstName.toUpperCase()}</h2>
-          ) : (
-            <h2>LifeTracker Application</h2>
-          )}
-        </Link>
+        {appState.user ? (
+          <span>LifeTracker For: {appState.user.firstName.toUpperCase()}</span>
+        ) : (
+          <span>LifeTracker Application</span>
+        )}
       </div>
       <div className="main-nav-items">
         <Link to="/activity">

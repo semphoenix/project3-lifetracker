@@ -53,11 +53,8 @@ const RegisterPage = ({ setAppState }) => {
       });
 
       if (data) {
-        setAppState((s) => ({ ...s, user: data.user, isAuthenticated: true }));
-        localStorage.setItem("vaccine_hub_token", data.token);
-
         setIsLoading(false);
-        navigate("/activity");
+        navigate("/login");
       } else {
         setErrors((e) => ({
           ...e,
