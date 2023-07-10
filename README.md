@@ -1,7 +1,7 @@
 # Project #3: LifeTracker Application
 
-<a href="https://www.youtube.com/embed/2Q7aO31N3JU">
-   <img style="max-width:300px;" src="https://img.youtube.com/vi/2Q7aO31N3JUE/maxresdefault.jpg">
+<a href="https://www.youtube.com/embed/2e1bikO8kl8">
+   <img style="max-width:300px;" src="https://img.youtube.com/vi/2e1bikO8kl8/maxresdefault.jpg">
 </a>
 
 ## Overview

@@ -58,6 +58,7 @@ const LoginPage = ({ appState, setAppState }) => {
       }
       // If a user is returned, user exists -- save token in localStorage, otherwise user does not exist
       if (data) {
+        // Authentication middleware
         setAppState((s) => ({
           ...s,
           isAuthenticated: true,
