@@ -63,7 +63,7 @@ const LoginPage = ({ appState, setAppState }) => {
           isAuthenticated: true,
         }));
         localStorage.setItem("lifetracker_token", data.token);
-        navigate("/");
+        navigate("/exercise");
       } else {
         setErrors((e) => ({
           ...e,
